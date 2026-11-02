@@ -1,0 +1,47 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+   
+   
+        // {
+        //     "name": "InstituteRun",
+        //     "request": "launch",
+        //     "type": "dart"
+        // },
+        // {
+        //     "name": "InstituteRun (profile mode)",
+        //     "request": "launch",
+        //     "type": "dart",
+        //     "flutterMode": "profile"
+        // },
+        // {
+        //     "name": "InstituteRun (release mode)",
+        //     "request": "launch",
+        //     "type": "dart",
+        //     "flutterMode": "release"
+        // },
+        {
+            "type": "dart",
+            "name": "Chrome",
+            "request": "launch",
+            "deviceId": "chrome",
+            "flutterMode": "debug",
+            "args": [
+                "--web-port=5000",
+                // "--dart-define=IS_PROD=true",
+            ]
+        },
+        {
+            "name": "Chrome V2",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "chrome",
+            "flutterMode": "debug",
+            "program": "lib_v2/main.dart",
+            "toolArgs": [
+                "--web-port=5000",
+                "--dart-define=IS_PROD=false",
+            ]
+        }
+    ]
+}

@@ -1,0 +1,201 @@
+void openEditBox(BuildContext context, int index) {
+    var user = controller.abc[index];
+    showDialog(
+      context: context,
+
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Edit User"),
+
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormField(
+                initialValue: user['source'] ?? "",
+                // : sourceCtrl,
+                decoration: const InputDecoration(labelText: "Source"),
+                onChanged: (value) {
+                  user['source'] = value;
+                },
+              ),
+
+              const SizedBox(height: 20),
+
+              TextFormField(
+                initialValue: user['description'] ?? "",
+
+                decoration: const InputDecoration(labelText: "Description"),
+                onChanged: (value) {
+                  user['description'] = value;
+                },
+              ),
+
+              const SizedBox(height: 30),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      // controller.update(['hello']);
+                    },
+
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey.shade300,
+                    ),
+
+                    child: const Text(
+                      "Cancel",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+
+                  // SAVE
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+
+                      controller.updateSource(index);
+                      // user["source"] = sourceCtrl.text;
+                      // user["description"] = descriptionCtrl.text;
+                      // controller.update(['hello']);
+                      // Navigator.pop(context);
+                    },
+
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green.shade300,
+                    ),
+
+                    child: const Text("Save"),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void addBox(BuildContext context) {
+    String source = '';
+    String des = '';
+    showDialog(
+      context: context,
+
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Add User"),
+
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormField(
+                decoration: const InputDecoration(labelText: "Source"),
+                onChanged: (value) {
+                  source = value;
+                },
+              ),
+
+              const SizedBox(height: 20),
+
+              TextFormField(
+                decoration: const InputDecoration(labelText: "Description"),
+                onChanged: (value) {
+                  des = value;
+                },
+              ),
+              const SizedBox(height: 30),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      // controller.update(['hello']);
+                    },
+
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey.shade300,
+                    ),
+
+                    child: const Text(
+                      "Cancel",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      controller.addSource(source, des);
+                    },
+
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green.shade300,
+                    ),
+
+                    child: const Text("Save"),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+
+class ProfileController extends GetxController {
+  int count = 12;
+
+  Rx<int> count1 = 10.obs;
+
+  RxInt cpimt = 0.obs;
+
+  String a = "";
+  RxString b = "".obs;
+
+  RxList<PostModel> data = <PostModel>[].obs;
+
+  void counter() {
+    count++;
+    update([3]);
+  }
+
+  void count1Tap() {
+    count1.value++;
+  }
+
+  String api = "https://jsonplaceholder.typicode.com/posts";
+
+  void getData() async {
+    Dio dio = Dio();
+
+    final res = await dio.get(api);
+
+    print(res.data);
+
+    data.value = (res.data as List).map((e) => PostModel.fromJson(e)).toList();
+  }
+}
+
+class PostModel {
+  final int userId;
+  final int id;
+  final String title;
+  final String body;
+
+  PostModel({required this.userId, required this.id, required this.title, required this.body});
+
+  factory PostModel.fromJson(Map<String, dynamic> json) {
+    return PostModel(userId: json['userId'], id: json['id'], title: json['title'] ?? "Siva8", body: json['body']);
+  }
+}
+
+https://devapi.instituterun.com/Employees/EmployeeLogins/UserLogin?username=Mango%40123
+https://devapi.instituterun.com/Employees/EmployeeLogins/UserLoginPasswordScreen

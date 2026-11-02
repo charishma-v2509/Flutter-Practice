@@ -1,0 +1,80 @@
+
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+.atom/
+.build/
+.buildlog/
+.history/
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ / Android Studio
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code
+# Uncomment if you don't want to upload VS Code settings
+#.vscode/
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+/coverage/
+.packages
+.metadata
+
+# Flutter generated files
+*.freezed.dart
+*.g.dart
+
+# Android generated / local files
+/android/local.properties
+/android/key.properties
+/android/captures/
+/android/.gradle/
+/android/app/debug
+/android/app/profile
+/android/app/release
+**/android/**/GeneratedPluginRegistrant.java
+
+# Signing keys and certificates
+*.jks
+*.keystore
+*.p12
+*.pem
+
+# Debug symbols and obfuscation maps
+app.*.symbols
+app.*.map.json
+
+# Web build output
+/web/build/
+
+# Test and coverage output
+/test/.test_coverage.dart
+*.lcov
+
+# Operating system and editor files
+.vscode-test/
+*.code-workspace
+
+# Local executables and binaries
+*.exe
+*.dll
+*.so
+*.dylib
